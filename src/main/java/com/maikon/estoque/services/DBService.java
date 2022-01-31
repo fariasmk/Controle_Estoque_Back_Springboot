@@ -31,10 +31,10 @@ public class DBService {
 
 
 
-		Movimentacao m1 = new Movimentacao(null, p1, "Entrada", 3000.00, sdf.parse("20/01/2022"), 5);
-		Movimentacao m2 = new Movimentacao(null, p2, "Entrada", 3000.00, sdf.parse("20/01/2022"), 5);
-		Movimentacao m3 = new Movimentacao(null, p1, "Saída", 5000.00, sdf.parse("25/01/2022"), 6);
-		Movimentacao m4 = new Movimentacao(null, p4, "Entrada", 5000.00, sdf.parse("25/01/2022"), 2);
+		Movimentacao m1 = new Movimentacao(null, p1, "Entrada", 3000.00, sdf.parse("20/01/2022"), 5L);
+		Movimentacao m2 = new Movimentacao(null, p2, "Entrada", 3000.00, sdf.parse("20/01/2022"), 5L);
+		Movimentacao m3 = new Movimentacao(null, p1, "Saída", 5000.00, sdf.parse("25/01/2022"), 6L);
+		Movimentacao m4 = new Movimentacao(null, p4, "Entrada", 5000.00, sdf.parse("25/01/2022"), 2L);
 
 //		p1.getList().add(m1);
 //		p2.getList().add(m2);

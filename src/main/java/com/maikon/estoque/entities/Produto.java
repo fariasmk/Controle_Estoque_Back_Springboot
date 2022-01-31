@@ -43,6 +43,7 @@ public class Produto implements Serializable {
 		this.tipo = tipo;
 		this.precoFornecedor = precoFornecedor;
 		this.qtdeEstoque = qtdeEstoque;
+
 	}
 
 	public List<Movimentacao> getList() {

@@ -20,23 +20,23 @@ public class Movimentacao implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "codigo")
 	private Produto produto;
-	private String tipoMovimentacao;
+	public String tipoMovimentacao;
 	private Double valorVenda;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dataVenda;
-	private Integer qtdeMovimentada;
+	private Long qtdeMovimentada;
 
 	public Movimentacao() {
 		super();
 	}
 
 	public Movimentacao(Integer id, Produto produto, String tipoMovimentacao, Double valorVenda, Date dataVenda,
-			Integer qtdeMovimentada) {
+			Long qtdeMovimentada) {
 		super();
 		this.id = id;
 		this.produto = produto;
@@ -86,11 +86,11 @@ public class Movimentacao implements Serializable {
 		this.dataVenda = dataVenda;
 	}
 
-	public Integer getQtdeMovimentada() {
+	public Long getQtdeMovimentada() {
 		return qtdeMovimentada;
 	}
 
-	public void setQtdeMovimentada(Integer qtdeMovimentada) {
+	public void setQtdeMovimentada(Long qtdeMovimentada) {
 		this.qtdeMovimentada = qtdeMovimentada;
 	}
 

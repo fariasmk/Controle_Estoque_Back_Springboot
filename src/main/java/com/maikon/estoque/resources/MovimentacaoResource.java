@@ -1,6 +1,7 @@
 package com.maikon.estoque.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,24 @@ public class MovimentacaoResource {
 	public ResponseEntity<Movimentacao> findById(@PathVariable Integer id) {
 		Movimentacao obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	@GetMapping(value = "/entrada")
+	public ResponseEntity<List<Movimentacao>> listOpen() {
+		List<Movimentacao> list = service.findAllEntrada();
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@GetMapping(value = "/saida")
+	public ResponseEntity<List<Movimentacao>> listClose() {
+		List<Movimentacao> list = service.findAllSaida();
+		return ResponseEntity.ok().body(list);
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Movimentacao>> listAll() {
+		List<Movimentacao> list = service.findAll();
+		return ResponseEntity.ok().body(list);
 	}
 
 	@PostMapping

@@ -21,21 +21,31 @@ public class MovimentacaoService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Movimentacao.class.getName()));
 	}
-	
+
+	public List<Movimentacao> findAllEntrada() {
+		List<Movimentacao> list = repository.findAllEntrada();
+		return list;
+	}
+
+	public List<Movimentacao> findAllSaida() {
+		List<Movimentacao> list = repository.findAllSaida();
+		return list;
+	}
+
 	public List<Movimentacao> findAll() {
 		List<Movimentacao> list = repository.findAll();
 		return list;
 	}
-	
+
 	public Movimentacao create(Movimentacao obj) {
 		obj.setId(null);
 		return repository.save(obj);
 	}
-	
+
 	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
-	
+
 	public Movimentacao update(Integer id, Movimentacao obj) {
 		Movimentacao newObj = findById(id);
 		newObj.setProduto(obj.getProduto());

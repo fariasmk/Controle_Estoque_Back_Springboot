@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.maikon.estoque.entities.Produto;
-import com.maikon.estoque.repositories.ProdutoRepository;
 import com.maikon.estoque.services.ProdutoService;
 
 @CrossOrigin("*")
@@ -27,9 +26,9 @@ public class ProdutoResource {
 
 	@Autowired
 	private ProdutoService service;
-	
-	@Autowired
-	private ProdutoRepository produtoRepository;
+
+//	@Autowired
+//	private ProdutoRepository produtoRepository;
 
 	@GetMapping(value = "/{codigo}")
 	public ResponseEntity<Produto> findById(@PathVariable Integer codigo) {
@@ -42,25 +41,26 @@ public class ProdutoResource {
 		List<Produto> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	
-	@GetMapping(path = "/tipo/{tipo}")
-	public Iterable<Produto> obterProdutosPorNome(@PathVariable String tipo) {
-		return produtoRepository.searchByNameLike(tipo);
-	}
-	
+
+//	@GetMapping(path = "/tipo/{tipo}")
+//	public Iterable<Produto> obterProdutosPorTipo(@PathVariable String tipo) {
+//		return produtoRepository.searchByTipo(tipo);
+//	}
+
 	@PostMapping
 	public ResponseEntity<Produto> create(@RequestBody Produto obj) {
 		obj = service.create(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigo}").buildAndExpand(obj.getCodigo()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{codigo}").buildAndExpand(obj.getCodigo())
+				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@DeleteMapping(value = "/{codigo}")
 	public ResponseEntity<Void> delete(@PathVariable Integer codigo) {
 		service.delete(codigo);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PutMapping(value = "/{codigo}")
 	public ResponseEntity<Produto> update(@PathVariable Integer codigo, @RequestBody Produto obj) {
 		Produto newObj = service.update(codigo, obj);

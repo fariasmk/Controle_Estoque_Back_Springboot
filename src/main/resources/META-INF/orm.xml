@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd" version="1.0">
+
+
+	<named-query name="atualizaQtdeEstoque">
+		<query>SELECT m.id AS ID, m.tipoMovimentacao AS TIPO_MOVIMENTACAO, m.qtdeMovimentada AS QTDE_MOVIMENTADA, p.qtdeEstoque AS QTDE_ESTOQUE
+					FROM Movimentacao AS m, Produto AS p
+					WHERE m.id = p.codigo</query>
+	</named-query>
+
+
+	<!--    <named-query name="Restaurant.activeGrabngoByCity">
+        	<query>from Restaurant r where r.active = true and r.grabngo = true and r.city like concat('%', :city, '%')</query>
+    	</named-query>
+    -->
+
+	<!-- You can have more...
+    <named-query name="Restaurant.otherMethodName">
+        <query>from Restaurant where whatever ... </query>
+    </named-query>
+    -->
+
+	<!-- 
+		<named-query name="findAllEntrada">
+        	<query>SELECT obj FROM Movimentacao obj WHERE obj.tipoMovimentacao = 'Entrada' ORDER BY obj.id</query>
+    	</named-query>
+    	
+    	<named-query name="findAllSaida">
+        	<query>SELECT obj FROM Movimentacao obj WHERE obj.tipoMovimentacao = 'Saída' ORDER BY obj.id</query>
+    	</named-query>
+    	-->
+
+</entity-mappings>

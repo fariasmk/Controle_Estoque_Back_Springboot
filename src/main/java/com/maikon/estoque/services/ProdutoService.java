@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.maikon.estoque.entities.Movimentacao;
 import com.maikon.estoque.entities.Produto;
+import com.maikon.estoque.repositories.MovimentacaoRepository;
 import com.maikon.estoque.repositories.ProdutoRepository;
 import com.maikon.estoque.services.exceptions.ObjectNotFoundException;
 
@@ -15,6 +17,9 @@ public class ProdutoService {
 
 	@Autowired
 	private ProdutoRepository repository;
+
+	@Autowired
+	private MovimentacaoRepository mRepository;
 
 	public Produto findById(Integer codigo) {
 		Optional<Produto> obj = repository.findById(codigo);
@@ -44,5 +49,19 @@ public class ProdutoService {
 		newObj.setQtdeEstoque(obj.getQtdeEstoque());
 		return repository.save(newObj);
 	}
+
+//	public void atualizaQtdeEstoque(Integer id, String tipoMovimentacao, Long qtdeMovimentada, Long qtdeEstoque) {
+//		List<Movimentacao> list = mRepository.atualizaQtdeEstoque();
+//		for (@SuppressWarnings("unused")
+//		Movimentacao m : list) {
+//			if (tipoMovimentacao.contains("Saída")) {
+//				qtdeEstoque -= qtdeMovimentada;
+//			} else if (tipoMovimentacao.contains("Entrada")){
+//				qtdeEstoque += qtdeMovimentada;
+//			}
+//		}
+//		Produto produto = new Produto();
+//		produto.setQtdeEstoque(qtdeEstoque);
+//	}
 
 }
